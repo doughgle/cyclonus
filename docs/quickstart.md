@@ -57,6 +57,13 @@ cd hack/kind
 CNI=calico RUN_FROM_SOURCE=false ./run-cyclonus.sh
 ```
 
+The script is designed to be idempotent - you can run it multiple times without errors. If you already have a KinD cluster with the same name, it will reuse the existing cluster unless you explicitly ask to recreate it:
+
+```
+cd hack/kind
+CNI=calico FORCE_RECREATE=true RUN_FROM_SOURCE=false ./run-cyclonus.sh
+```
+
 This will:
 
  - create a namespace, service account, and cluster role binding for cyclonus
